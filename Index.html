@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Deeptify Premium Store</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0f0f0f;
+      color: white;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff0057, #ff7b00);
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      text-align: center;
+      color: #aaa;
+      padding: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      padding: 15px;
+    }
+
+    .card {
+      background: #1c1c1c;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.05);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .price {
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #ff0057, #ff7b00);
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #777;
+    }
+
+    /* ORDER BOX */
+    #orderBox {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 10%;
+      right: 10%;
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>🔥 DEEPTIFY PREMIUM STORE</header>
+<div class="tagline">COD Available | Fast Delivery | Trusted Store</div>
+
+<div class="grid">
+
+  <div class="card">
+    <img src="https://via.placeholder.com/150">
+    <h3>Smart Watch</h3>
+    <p class="price">₹999</p>
+    <button onclick="orderNow('Smart Watch','999')">Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/150">
+    <h3>Headphones</h3>
+    <p class="price">₹799</p>
+    <button onclick="orderNow('Headphones','799')">Buy Now</button>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/150">
+    <h3>Shoes</h3>
+    <p class="price">₹1299</p>
+    <button onclick="orderNow('Shoes','1299')">Buy Now</button>
+  </div>
+
+</div>
+
+<footer>© 2026 Deeptify Store</footer>
+
+<!-- ORDER FORM -->
+<div id="orderBox">
+  <h3>Place COD Order</h3>
+
+  <input id="name" placeholder="Your Name">
+  <input id="address" placeholder="Address">
+  <input id="phone" placeholder="Phone">
+
+  <button onclick="submitOrder()">Confirm Order</button>
+  <button onclick="closeBox()">Close</button>
+</div>
+
+<script>
+let productName = "";
+let productPrice = "";
+
+function orderNow(name, price){
+  productName = name;
+  productPrice = price;
+  document.getElementById("orderBox").style.display = "block";
+}
+
+function closeBox(){
+  document.getElementById("orderBox").style.display = "none";
+}
+
+function submitOrder(){
+  let name = document.getElementById("name").value;
+  let address = document.getElementById("address").value;
+  let phone = document.getElementById("phone").value;
+
+  if(name=="" || address=="" || phone==""){
+    alert("Please fill all details");
+    return;
+  }
+
+  alert("Order Placed Successfully 🚚 COD Confirmed");
+
+  console.log({
+    product: productName,
+    price: productPrice,
+    name: name,
+    address: address,
+    phone: phone
+  });
+
+  closeBox();
+}
+</script>
+
+</body>
+</html>
